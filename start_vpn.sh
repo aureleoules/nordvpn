@@ -131,4 +131,5 @@ create_tun_device
 nordvpn connect ${CONNECT} || exit 1
 nordvpn status
 
+sleep 10 && ip rule add from all to $(ip rule | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}') lookup main
 tail -f --pid=$(pidof nordvpnd) /var/log/nordvpn/daemon.log
